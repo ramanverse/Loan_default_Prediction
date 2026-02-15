@@ -1,0 +1,46 @@
+# Configuration file for CreditPulse AI Platform
+
+# Data settings
+data:
+  train_file: "application_train.csv"
+  test_file: "application_test.csv"
+  sample_size: 20000
+  max_rows_for_viz: 20000
+
+# Preprocessing settings
+preprocessing:
+  missing_threshold: 0.40  # Drop columns with >40% missing
+  iqr_factor: 1.5  # IQR multiplier for outlier capping
+  imputation_strategy: "median"
+  
+# Model settings
+model:
+  test_size: 0.2
+  random_state: 42
+  cv_folds: 3
+  
+# Feature engineering
+features:
+  engineered_features:
+    - AGE
+    - EMPLOY_YEARS
+    - CREDIT_INCOME_RATIO
+    - ANNUITY_INCOME_RATIO
+    - EXT_SOURCES_MEAN
+  
+# API settings
+api:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false
+  
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/app.log"
+  
+# Performance
+performance:
+  enable_caching: true
+  cache_ttl: 3600  # seconds
